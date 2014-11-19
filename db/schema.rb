@@ -178,6 +178,7 @@ ActiveRecord::Schema.define(version: 20410822171423) do
   create_table "news", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.string   "author"
     t.boolean  "front_page"
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -185,7 +186,6 @@ ActiveRecord::Schema.define(version: 20410822171423) do
     t.datetime "image_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "profile_id"
   end
 
   create_table "nominations", force: true do |t|
@@ -249,17 +249,12 @@ ActiveRecord::Schema.define(version: 20410822171423) do
 
   create_table "posts", force: true do |t|
     t.string   "title"
-    t.integer  "limit",         default: 0
+    t.integer  "limit",       default: 0
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "council_id"
-    t.boolean  "extra_text"
-    t.string   "elected_by"
-    t.string   "elected_at"
-    t.text     "election_text"
-    t.boolean  "styrelse"
-    t.integer  "recLimit",      default: 0
+    t.integer  "recLimit",    default: 0
   end
 
   create_table "posts_profiles", id: false, force: true do |t|
@@ -279,9 +274,6 @@ ActiveRecord::Schema.define(version: 20410822171423) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "first_post"
-    t.string   "email"
-    t.string   "stil_id"
-    t.string   "phone"
   end
 
   create_table "roles", force: true do |t|
