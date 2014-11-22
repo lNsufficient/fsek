@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20410822171423) do
+ActiveRecord::Schema.define(version: 20410822171425) do
 
   create_table "album_categories", force: true do |t|
     t.string   "name"
@@ -48,6 +48,18 @@ ActiveRecord::Schema.define(version: 20410822171423) do
   create_table "albums_subcategories", id: false, force: true do |t|
     t.integer "album_id"
     t.integer "subcategory_id"
+  end
+
+  create_table "cafe_works", force: true do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cafe_works_profiles", id: false, force: true do |t|
+    t.integer "profile_id"
+    t.integer "cafe_work_id"
   end
 
   create_table "candidates", force: true do |t|

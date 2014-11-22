@@ -5,7 +5,6 @@ Fsek::Application.routes.draw do
   get 'kurslankar' => 'static_pages#kurslankar'
   get 'libo' => 'static_pages#libo', as: :libo
   get 'kalender' => 'events#calendar',as: :kalender
-  get 'cafe_kalender' => 'cafe_works#calendar',as: :cafe_kalender
   get '/nollning', to: redirect('http://nollning.fsektionen.se'), as: :nollning
   get '/vecktorn', to: redirect('http://old.fsektionen.se/vecktorn/signup.php'), as: :vecktorn_signup
   
@@ -52,7 +51,6 @@ Fsek::Application.routes.draw do
       end
     end
     resources :faqs, path: :faq
-    resources :cafe_works, path: :cafe
     resources :contacts, path: :kontakt do
       post :mail, on: :member
     end    
