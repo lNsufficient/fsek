@@ -139,6 +139,25 @@ ActiveRecord::Schema.define(version: 20410822171425) do
     t.integer "post_id"
   end
 
+  create_table "email_accounts", force: true do |t|
+    t.integer  "profile_id"
+    t.string   "email"
+    t.string   "title"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "emails", force: true do |t|
+    t.integer  "email_account_id"
+    t.string   "receiver"
+    t.string   "subject"
+    t.text     "message"
+    t.boolean  "copy"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", force: true do |t|
     t.string   "title"
     t.string   "author"
@@ -286,6 +305,21 @@ ActiveRecord::Schema.define(version: 20410822171425) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "first_post"
+  end
+
+  create_table "rents", force: true do |t|
+    t.datetime "from"
+    t.datetime "til"
+    t.string   "name"
+    t.string   "lastname"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "purpose"
+    t.boolean  "disclaimer"
+    t.boolean  "confirmed"
+    t.integer  "council_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", force: true do |t|

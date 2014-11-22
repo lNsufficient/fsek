@@ -3,6 +3,7 @@ class Profile < ActiveRecord::Base
   has_and_belongs_to_many :posts
   has_many :candidates  
   has_and_belongs_to_many :cafe_works
+  has_one :email_account  
   
   has_attached_file :avatar, 
                     :styles => { original: "800x800>", medium: "300x300>", thumb:  "100x100>" },                   
@@ -11,10 +12,10 @@ class Profile < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/ 
   
 
-  def namn
-    self.name || self.user.username
-  end
   def to_s
+    self.name || self.user.username
+  end  
+  def print  
     if(self.first_post)
       post = Post.find_by_id(self.first_post)
     end
